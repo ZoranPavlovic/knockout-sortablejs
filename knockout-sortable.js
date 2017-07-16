@@ -137,8 +137,14 @@
                 // as this might be a computed array. We could otherwise potentially
                 // drop an item above the 3rd visible item, but the 2nd visible item
                 // has an actual index of 5.
+                var currentIndex = to().indexOf(itemVM);
                 if (e.item.previousElementSibling) {
-                    newIndex = to().indexOf(ko.dataFor(e.item.previousElementSibling)) + 1;
+                    // Todo: OffsetFix may not apply when moving to different "to" array.
+                    var sibling = ko.dataFor(e.item.previousElementSibling);
+                    var offsetFix = 0;
+                    if (currentIndex > newIndex)
+                        offsetFix += 1;
+                    newIndex = to().indexOf(sibling) + offsetFix;
                 }
 
                 // Remove sortables "unbound" element
