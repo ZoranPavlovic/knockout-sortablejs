@@ -127,10 +127,10 @@
             // clone indicates if we should move or copy the item into the new collection
             moveItem = function (itemVM, from, to, clone, e) {
                 // Unwrapping this allows us to manipulate the actual array
-                var fromArray = from
-                    // It's not certain that the items actual index is the same
-                    // as the index reported by sortable due to filtering etc.
-                var originalIndex = fromArray.indexOf(itemVM),
+                var fromArray = from;
+                // It's not certain that the items actual index is the same
+                // as the index reported by sortable due to filtering etc.
+                var originalIndex = fromArray.indexOf(itemVM);
                 var newIndex = e.newIndex;
 
                 // We have to find out the actual desired index of the to array,
